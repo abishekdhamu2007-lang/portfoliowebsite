@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-fira-code: "Fira Code", monospace;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+    background-color: #0B1120;
+  }
+
+  body {
+    background-color: #0B1120;
+    color: #FFFFFF;
+    font-family: var(--font-inter);
+    overflow-x: hidden;
+    min-height: 100vh;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: rgba(79, 70, 229, 0.4);
+    color: #FFFFFF;
+  }
+
+  /* Custom Modern Dark Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0B1120;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1E293B;
+    border-radius: 9999px;
+    border: 2px solid #0B1120;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #334155;
+  }
+}
+
+@layer utilities {
+  .text-glow-accent {
+    text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+  }
+  
+  .text-glow-primary {
+    text-shadow: 0 0 20px rgba(79, 70, 229, 0.5);
+  }
+
+  .border-glow-primary {
+    box-shadow: 0 0 15px rgba(79, 70, 229, 0.3);
+  }
+}
+
+/* Accessibility: Respect Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
