@@ -7,15 +7,10 @@ import {
   ArrowRight,
   Download,
   Mail,
-  Code,
   Sparkles,
-  Terminal,
-  FileCode,
-  Database,
-  Cpu,
-  Layers,
-  CheckCircle2,
   MapPin,
+  CheckCircle2,
+  Code2,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
 import { GradientButton } from "@/components/ui/GradientButton";
@@ -25,11 +20,11 @@ import { fadeIn, staggerContainer } from "@/lib/animations";
 
 export const Hero: React.FC = () => {
   const techBadges = [
-    { name: "React", icon: "⚛️", color: "#61DAFB", x: "-left-6", y: "top-12", delay: 0 },
+    { name: "React", icon: "⚛️", color: "#61DAFB", x: "-left-6", y: "top-10", delay: 0 },
     { name: "JavaScript", icon: "⚡", color: "#F7DF1E", x: "right-2", y: "top-6", delay: 0.2 },
-    { name: "Python", icon: "🐍", color: "#3776AB", x: "-left-6", y: "bottom-12", delay: 0.4 },
-    { name: "SQL", icon: "🗄️", color: "#00758F", x: "right-4", y: "bottom-8", delay: 0.6 },
-    { name: "Tailwind CSS", icon: "🎨", color: "#38B2AC", x: "right-20", y: "-top-6", delay: 0.8 },
+    { name: "Python", icon: "🐍", color: "#3776AB", x: "-left-8", y: "bottom-16", delay: 0.4 },
+    { name: "SQL", icon: "🗄️", color: "#00758F", x: "right-2", y: "bottom-12", delay: 0.6 },
+    { name: "Tailwind CSS", icon: "🎨", color: "#38B2AC", x: "right-16", y: "-top-6", delay: 0.8 },
   ];
 
   return (
@@ -39,14 +34,14 @@ export const Hero: React.FC = () => {
       className="relative min-h-screen flex items-center justify-center pt-28 pb-16 lg:pt-32 lg:pb-24 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
           
           {/* Left Column: Hero Content & Bio */}
           <motion.div
             variants={staggerContainer(0.15, 0.1)}
             initial="hidden"
             animate="show"
-            className="lg:col-span-6 flex flex-col items-start text-left z-10"
+            className="lg:col-span-7 flex flex-col items-start text-left z-10"
           >
             {/* Status / Welcome Pill */}
             <motion.div
@@ -154,106 +149,63 @@ export const Hero: React.FC = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Column: Code & Photo Visual Showcase */}
+          {/* Right Column: Hero Portrait Showcase Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="lg:col-span-6 relative flex flex-col items-center justify-center lg:items-end gap-5"
+            className="lg:col-span-5 relative flex items-center justify-center lg:justify-end"
           >
-            {/* Ambient Background Aura */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 via-secondary/20 to-accent/20 rounded-3xl blur-3xl -z-10" />
+            {/* Ambient Background Glow Mesh */}
+            <div className="absolute -inset-4 bg-gradient-to-tr from-primary/30 via-secondary/25 to-accent/25 rounded-3xl blur-3xl -z-10 animate-pulse-glow" />
 
-            <TiltCard maxTilt={8} className="w-full max-w-lg shadow-2xl">
-              <div className="relative rounded-2xl bg-dark-900/90 border border-white/15 backdrop-blur-2xl overflow-hidden shadow-2xl">
-                
-                {/* Visual Header with Developer Profile Bar */}
-                <div className="p-4 bg-white/[0.04] border-b border-white/10 flex items-center justify-between gap-4">
-                  <div className="flex items-center gap-3.5">
-                    {/* Glowing Profile Avatar */}
-                    <div className="relative group shrink-0">
-                      <div className="absolute -inset-0.5 rounded-full bg-gradient-to-tr from-primary via-secondary to-accent opacity-75 blur-sm group-hover:opacity-100 transition duration-300" />
-                      <div className="relative h-12 w-12 sm:h-14 sm:w-14 rounded-full overflow-hidden border-2 border-white/20 bg-dark-900 shadow-lg">
-                        <Image
-                          src={SITE_CONFIG.profileImage}
-                          alt={SITE_CONFIG.name}
-                          width={56}
-                          height={56}
-                          priority
-                          className="h-full w-full object-cover object-top"
-                        />
+            <TiltCard maxTilt={8} className="w-full max-w-sm shadow-card-elevation">
+              <div className="relative rounded-3xl p-1 bg-gradient-to-b from-white/20 via-primary/30 to-secondary/30 shadow-2xl backdrop-blur-2xl">
+                <div className="relative rounded-[22px] overflow-hidden bg-dark-900 border border-white/10">
+                  
+                  {/* Portrait Image */}
+                  <div className="relative aspect-[4/5] w-full overflow-hidden">
+                    <Image
+                      src={SITE_CONFIG.profileImage}
+                      alt={SITE_CONFIG.name}
+                      fill
+                      priority
+                      sizes="(max-width: 768px) 100vw, 420px"
+                      className="object-cover object-top hover:scale-105 transition-transform duration-700"
+                    />
+                    {/* Gradient Fade Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent opacity-85" />
+                  </div>
+
+                  {/* Glassmorphic Info Banner */}
+                  <div className="p-5 relative -mt-14 z-10 bg-dark-900/90 backdrop-blur-xl border-t border-white/10">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h3 className="text-lg font-bold text-white">
+                          {SITE_CONFIG.name}
+                        </h3>
+                        <p className="text-xs font-mono text-accent">
+                          Web Developer &amp; Frontend Engineer
+                        </p>
                       </div>
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="font-bold text-sm text-white">{SITE_CONFIG.name}</span>
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[11px] font-mono text-emerald-400">
                         <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                        <span>Available</span>
                       </div>
-                      <p className="text-[11px] font-mono text-accent">Web &amp; Frontend Developer</p>
+                    </div>
+
+                    <div className="mt-3 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 font-mono">
+                      <span className="flex items-center gap-1">
+                        <MapPin className="w-3.5 h-3.5 text-primary" /> Salem, India
+                      </span>
+                      <span className="text-slate-300">TCS Trained</span>
                     </div>
                   </div>
-
-                  <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/[0.05] text-[11px] font-mono text-slate-300 border border-white/5">
-                    <Code className="w-3.5 h-3.5 text-accent" />
-                    <span>Developer.tsx</span>
-                  </div>
-                </div>
-
-                {/* IDE Code Snippet Body */}
-                <div className="p-5 font-mono text-xs leading-relaxed space-y-1.5 select-none bg-dark-950/60">
-                  <div className="text-slate-500">// Modern Web Developer Profile</div>
-                  <div>
-                    <span className="text-secondary font-bold">const</span>{" "}
-                    <span className="text-accent font-bold">developer</span> = &#123;
-                  </div>
-                  <div className="pl-4">
-                    <span className="text-slate-300">name:</span>{" "}
-                    <span className="text-emerald-400">&quot;Abishek D&quot;</span>,
-                  </div>
-                  <div className="pl-4">
-                    <span className="text-slate-300">role:</span>{" "}
-                    <span className="text-emerald-400">&quot;Frontend & Web Developer&quot;</span>,
-                  </div>
-                  <div className="pl-4">
-                    <span className="text-slate-300">coreStack:</span> [
-                  </div>
-                  <div className="pl-8 text-amber-300">
-                    &quot;React&quot;, &quot;Next.js&quot;, &quot;JavaScript&quot;, &quot;Python&quot;, &quot;SQL&quot;
-                  </div>
-                  <div className="pl-4">],</div>
-                  <div className="pl-4">
-                    <span className="text-slate-300">enthusiasms:</span> [
-                  </div>
-                  <div className="pl-8 text-cyan-300">
-                    &quot;AI Tools&quot;, &quot;Data Analytics&quot;, &quot;UI/UX&quot;
-                  </div>
-                  <div className="pl-4">],</div>
-                  <div className="pl-4">
-                    <span className="text-slate-300">status:</span>{" "}
-                    <span className="text-emerald-400">&quot;Ready to build high-impact web apps&quot;</span>
-                  </div>
-                  <div>&#125;;</div>
-                  <div className="pt-2 text-indigo-400">
-                    export default developer;
-                  </div>
-                </div>
-
-                {/* IDE Footer Bar */}
-                <div className="px-4 py-2.5 bg-white/[0.02] border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-muted">
-                  <div className="flex items-center gap-3">
-                    <span className="flex items-center gap-1 text-accent">
-                      <Terminal className="w-3 h-3" /> main*
-                    </span>
-                    <span>UTF-8</span>
-                  </div>
-                  <span className="text-emerald-400 flex items-center gap-1">
-                    <CheckCircle2 className="w-3 h-3" /> Prettier Ready
-                  </span>
                 </div>
               </div>
             </TiltCard>
 
-            {/* Floating Technology Pills around workspace */}
+            {/* Floating Technology Badges around Portrait */}
             {techBadges.map((badge, idx) => (
               <motion.div
                 key={badge.name}
