@@ -83,7 +83,9 @@ export const SITE_CONFIG = {
     github: "https://github.com/abishekdhamu2007-lang",
     youtube: "[YOUR YOUTUBE]",
   },
-  resumePath: "/resume.pdf",
+  profileImage: "/images/abishek.jpg",
+  resumePath: "/abishek-d-resume.pdf",
+  resumeFileName: "abishek D-resume.pdf",
 };
 
 export const NAV_ITEMS: NavItem[] = [

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -61,16 +62,31 @@ export const Hero: React.FC = () => {
               </span>
             </motion.div>
 
-            {/* Intro and Name Heading */}
-            <motion.div variants={fadeIn("up", 0.2)} className="space-y-2">
-              <p className="text-lg md:text-xl font-medium text-slate-300">
-                Hi, I&apos;m
-              </p>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight">
-                <span className="bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">
-                  {SITE_CONFIG.name}
-                </span>
-              </h1>
+            {/* Intro and Name Heading with Profile Photo */}
+            <motion.div variants={fadeIn("up", 0.2)} className="flex items-center gap-5 sm:gap-6 mb-2">
+              <div className="relative group shrink-0">
+                <div className="absolute -inset-1 rounded-2xl bg-gradient-to-tr from-primary via-secondary to-accent opacity-75 blur-md group-hover:opacity-100 transition duration-500 animate-pulse-glow" />
+                <div className="relative h-20 w-20 sm:h-24 sm:w-24 rounded-2xl overflow-hidden border-2 border-white/20 bg-dark-900 shadow-2xl">
+                  <Image
+                    src={SITE_CONFIG.profileImage}
+                    alt={SITE_CONFIG.name}
+                    width={96}
+                    height={96}
+                    priority
+                    className="h-full w-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </div>
+              <div className="space-y-1">
+                <p className="text-base sm:text-lg font-medium text-slate-300">
+                  Hi, I&apos;m
+                </p>
+                <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                  <span className="bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">
+                    {SITE_CONFIG.name}
+                  </span>
+                </h1>
+              </div>
             </motion.div>
 
             {/* Dynamic Typewriter Roles */}
@@ -113,7 +129,8 @@ export const Hero: React.FC = () => {
                 variant="secondary"
                 size="lg"
                 href={SITE_CONFIG.resumePath}
-                download="Abishek_D_Resume.pdf"
+                download={SITE_CONFIG.resumeFileName}
+                target="_blank"
                 icon={<Download className="w-4 h-4" />}
                 className="w-full sm:w-auto"
               >

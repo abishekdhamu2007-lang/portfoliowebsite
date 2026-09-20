@@ -58,7 +58,8 @@ export const ResumeCTA: React.FC = () => {
                   variant="primary"
                   size="lg"
                   href={SITE_CONFIG.resumePath}
-                  download="Abishek_D_Resume.pdf"
+                  download={SITE_CONFIG.resumeFileName}
+                  target="_blank"
                   icon={<Download className="w-4 h-4" />}
                 >
                   Download Resume
