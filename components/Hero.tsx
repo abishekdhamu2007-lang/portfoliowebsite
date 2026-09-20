@@ -15,21 +15,21 @@ import {
   Cpu,
   Layers,
   CheckCircle2,
+  MapPin,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
 import { GradientButton } from "@/components/ui/GradientButton";
 import { TypewriterText } from "@/components/ui/TypewriterText";
 import { TiltCard } from "@/components/ui/TiltCard";
-import { GlassCard } from "@/components/ui/GlassCard";
 import { fadeIn, staggerContainer } from "@/lib/animations";
 
 export const Hero: React.FC = () => {
   const techBadges = [
-    { name: "React", icon: "⚛️", color: "#61DAFB", x: "-left-6", y: "top-8", delay: 0 },
-    { name: "JavaScript", icon: "⚡", color: "#F7DF1E", x: "right-2", y: "top-4", delay: 0.2 },
-    { name: "Python", icon: "🐍", color: "#3776AB", x: "-left-8", y: "bottom-16", delay: 0.4 },
-    { name: "SQL", icon: "🗄️", color: "#00758F", x: "right-4", y: "bottom-10", delay: 0.6 },
-    { name: "Tailwind CSS", icon: "🎨", color: "#38B2AC", x: "right-24", y: "-top-8", delay: 0.8 },
+    { name: "React", icon: "⚛️", color: "#61DAFB", x: "-left-6", y: "top-12", delay: 0 },
+    { name: "JavaScript", icon: "⚡", color: "#F7DF1E", x: "right-2", y: "top-6", delay: 0.2 },
+    { name: "Python", icon: "🐍", color: "#3776AB", x: "-left-6", y: "bottom-12", delay: 0.4 },
+    { name: "SQL", icon: "🗄️", color: "#00758F", x: "right-4", y: "bottom-8", delay: 0.6 },
+    { name: "Tailwind CSS", icon: "🎨", color: "#38B2AC", x: "right-20", y: "-top-6", delay: 0.8 },
   ];
 
   return (
@@ -46,7 +46,7 @@ export const Hero: React.FC = () => {
             variants={staggerContainer(0.15, 0.1)}
             initial="hidden"
             animate="show"
-            className="lg:col-span-7 flex flex-col items-start text-left z-10"
+            className="lg:col-span-6 flex flex-col items-start text-left z-10"
           >
             {/* Status / Welcome Pill */}
             <motion.div
@@ -62,31 +62,16 @@ export const Hero: React.FC = () => {
               </span>
             </motion.div>
 
-            {/* Intro and Name Heading with Profile Photo */}
-            <motion.div variants={fadeIn("up", 0.2)} className="flex items-center gap-5 sm:gap-6 mb-2">
-              <div className="relative group shrink-0">
-                <div className="absolute -inset-1 rounded-2xl bg-gradient-to-tr from-primary via-secondary to-accent opacity-75 blur-md group-hover:opacity-100 transition duration-500 animate-pulse-glow" />
-                <div className="relative h-20 w-20 sm:h-24 sm:w-24 rounded-2xl overflow-hidden border-2 border-white/20 bg-dark-900 shadow-2xl">
-                  <Image
-                    src={SITE_CONFIG.profileImage}
-                    alt={SITE_CONFIG.name}
-                    width={96}
-                    height={96}
-                    priority
-                    className="h-full w-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-              </div>
-              <div className="space-y-1">
-                <p className="text-base sm:text-lg font-medium text-slate-300">
-                  Hi, I&apos;m
-                </p>
-                <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                  <span className="bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">
-                    {SITE_CONFIG.name}
-                  </span>
-                </h1>
-              </div>
+            {/* Intro and Name Heading */}
+            <motion.div variants={fadeIn("up", 0.2)} className="space-y-2">
+              <p className="text-lg md:text-xl font-medium text-slate-300">
+                Hi, I&apos;m
+              </p>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight">
+                <span className="bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">
+                  {SITE_CONFIG.name}
+                </span>
+              </h1>
             </motion.div>
 
             {/* Dynamic Typewriter Roles */}
@@ -169,37 +154,53 @@ export const Hero: React.FC = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Column: Interactive 3D Developer Workspace Visual */}
+          {/* Right Column: Code & Photo Visual Showcase */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="lg:col-span-5 relative flex items-center justify-center lg:justify-end"
+            className="lg:col-span-6 relative flex flex-col items-center justify-center lg:items-end gap-5"
           >
             {/* Ambient Background Aura */}
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 via-secondary/20 to-accent/20 rounded-3xl blur-3xl -z-10" />
 
-            <TiltCard maxTilt={10} className="w-full max-w-md shadow-2xl">
+            <TiltCard maxTilt={8} className="w-full max-w-lg shadow-2xl">
               <div className="relative rounded-2xl bg-dark-900/90 border border-white/15 backdrop-blur-2xl overflow-hidden shadow-2xl">
-                {/* IDE Window Top Bar */}
-                <div className="flex items-center justify-between px-4 py-3 bg-white/[0.03] border-b border-white/10">
-                  <div className="flex items-center gap-2">
-                    <span className="h-3 w-3 rounded-full bg-rose-500/80 inline-block" />
-                    <span className="h-3 w-3 rounded-full bg-amber-500/80 inline-block" />
-                    <span className="h-3 w-3 rounded-full bg-emerald-500/80 inline-block" />
+                
+                {/* Visual Header with Developer Profile Bar */}
+                <div className="p-4 bg-white/[0.04] border-b border-white/10 flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-3.5">
+                    {/* Glowing Profile Avatar */}
+                    <div className="relative group shrink-0">
+                      <div className="absolute -inset-0.5 rounded-full bg-gradient-to-tr from-primary via-secondary to-accent opacity-75 blur-sm group-hover:opacity-100 transition duration-300" />
+                      <div className="relative h-12 w-12 sm:h-14 sm:w-14 rounded-full overflow-hidden border-2 border-white/20 bg-dark-900 shadow-lg">
+                        <Image
+                          src={SITE_CONFIG.profileImage}
+                          alt={SITE_CONFIG.name}
+                          width={56}
+                          height={56}
+                          priority
+                          className="h-full w-full object-cover object-top"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-bold text-sm text-white">{SITE_CONFIG.name}</span>
+                        <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                      </div>
+                      <p className="text-[11px] font-mono text-accent">Web &amp; Frontend Developer</p>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-white/[0.05] text-[11px] font-mono text-slate-300">
+
+                  <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/[0.05] text-[11px] font-mono text-slate-300 border border-white/5">
                     <Code className="w-3.5 h-3.5 text-accent" />
-                    <span>AbishekDeveloper.tsx</span>
-                  </div>
-                  <div className="text-[10px] font-mono text-muted flex items-center gap-1">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                    <span>TypeScript</span>
+                    <span>Developer.tsx</span>
                   </div>
                 </div>
 
                 {/* IDE Code Snippet Body */}
-                <div className="p-5 font-mono text-xs leading-relaxed space-y-1.5 select-none">
+                <div className="p-5 font-mono text-xs leading-relaxed space-y-1.5 select-none bg-dark-950/60">
                   <div className="text-slate-500">// Modern Web Developer Profile</div>
                   <div>
                     <span className="text-secondary font-bold">const</span>{" "}
@@ -228,10 +229,6 @@ export const Hero: React.FC = () => {
                   </div>
                   <div className="pl-4">],</div>
                   <div className="pl-4">
-                    <span className="text-slate-300">internshipExposure:</span>{" "}
-                    <span className="text-indigo-400">true</span>,
-                  </div>
-                  <div className="pl-4">
                     <span className="text-slate-300">status:</span>{" "}
                     <span className="text-emerald-400">&quot;Ready to build high-impact web apps&quot;</span>
                   </div>
@@ -242,7 +239,7 @@ export const Hero: React.FC = () => {
                 </div>
 
                 {/* IDE Footer Bar */}
-                <div className="px-4 py-2 bg-white/[0.02] border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-muted">
+                <div className="px-4 py-2.5 bg-white/[0.02] border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-muted">
                   <div className="flex items-center gap-3">
                     <span className="flex items-center gap-1 text-accent">
                       <Terminal className="w-3 h-3" /> main*
